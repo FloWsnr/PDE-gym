@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pde-gym"
+version = "0.1.0"
+description = "Gymnasium RL environment for PDE simulations using WebGL shaders"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "PDE-Gym Contributors" }
+]
+keywords = ["reinforcement-learning", "pde", "simulation", "gymnasium", "webgl"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "gymnasium>=0.29.0",
+    "playwright>=1.40.0",
+    "numpy>=1.24.0",
+    "Pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+train = [
+    "stable-baselines3>=2.0.0",
+    "torch>=2.0.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/FloWsnr/PDE-gym"
+Documentation = "https://github.com/FloWsnr/PDE-gym#readme"
+Repository = "https://github.com/FloWsnr/PDE-gym"
+
+[project.entry-points."gymnasium.envs"]
+PDEEnv = "pde_gym:PDEEnv"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pde_gym"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "pde_gym/**",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_ignores = true

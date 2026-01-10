@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VisualPDE Headless</title>
+  <script type="text/javascript">
+    // Headless mode configuration - set BEFORE main.js loads
+    window.HEADLESS_MODE = true;
+    window.expandingOptionsInProgress = false;
+    window.linkParsed = true;
+    window.badLink = false;
+
+    // Optional: set seed for reproducibility
+    // window.VPDE_SEED = 12345;
+  </script>
+
+  <!-- Core dependencies -->
+  <script src="../sim/scripts/expr-eval.js"></script>
+  <!-- jQuery still needed for some utility functions -->
+  <script src="../assets/js/jQuery.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+  <!-- Main simulation canvas -->
+  <canvas id="simCanvas" width="512" height="512"></canvas>
+
+  <!-- dat.gui still needed for some utility functions -->
+  <script src="../sim/scripts/dat.gui.min.js"></script>
+
+  <!-- Main simulation module -->
+  <script type="module" src="../sim/scripts/RD/main.js"></script>
+</body>
+</html>
